@@ -1,7 +1,6 @@
 FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 WORKDIR /src
 
-COPY GateOps.sln .
 COPY src/GateOps.Domain/GateOps.Domain.csproj src/GateOps.Domain/
 COPY src/GateOps.Application/GateOps.Application.csproj src/GateOps.Application/
 COPY src/GateOps.Infrastructure/GateOps.Infrastructure.csproj src/GateOps.Infrastructure/
