@@ -33,8 +33,10 @@ public sealed class GateOpsExceptionHandlingMiddleware(RequestDelegate next, ILo
     private static async Task WriteProblemAsync(HttpContext context, int statusCode, string title, string detail)
     {
         context.Response.StatusCode = statusCode;
-        context.Response.ContentType = "application/problem+json";
         var problem = new ProblemDetails { Status = statusCode, Title = title, Detail = detail };
-        await context.Response.WriteAsJsonAsync(problem);
+        // Setting ContentType before WriteAsJsonAsync doesn't stick — that call sets
+        // its own "application/json" header — so the correct media type has to go
+        // through the contentType parameter instead.
+        await context.Response.WriteAsJsonAsync(problem, options: null, contentType: "application/problem+json");
     }
 }
