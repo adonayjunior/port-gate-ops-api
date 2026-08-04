@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/GateOps.Api/GateOps.Api.csproj" />
+    <Project Path="src/GateOps.Application/GateOps.Application.csproj" />
+    <Project Path="src/GateOps.Domain/GateOps.Domain.csproj" />
+    <Project Path="src/GateOps.Infrastructure/GateOps.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/GateOps.Application.Tests/GateOps.Application.Tests.csproj" />
+    <Project Path="tests/GateOps.Domain.Tests/GateOps.Domain.Tests.csproj" />
+  </Folder>
+</Solution>
