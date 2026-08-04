@@ -4,6 +4,12 @@ A reference implementation of a **generic port/container terminal gate operation
 
 > **Why this exists / what it deliberately is not**: I've spent most of my career building gate control, TOS integration and billing systems for real port terminals. None of that code is mine to publish — it belongs to the companies I built it for. This repo is a from-scratch rewrite of the *concept* (how gate appointments, check-ins and yard movements generally work in the industry) using invented data, no real terminal/client names, and no proprietary business rules. It's here to prove the architecture and domain modeling skill, not to leak anything.
 
+## Product case study
+
+This repository also documents the product thinking behind the implementation: users and jobs to be done, discovery hypotheses, MVP boundaries, prioritization, target metrics, roadmap, analytics, and product/architecture trade-offs.
+
+Start with [`docs/product/README.md`](docs/product/README.md). The case clearly labels what is **Implemented**, an **Assumption**, a **Target**, or **Proposed** so that portfolio evidence is never presented as a real-user outcome.
+
 ## The domain, briefly
 A `GateAppointment` is a scheduled visit for a container/vehicle at the terminal gate:
 - **Scheduled** → the truck is expected within a time window.
