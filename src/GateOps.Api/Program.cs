@@ -12,6 +12,15 @@ builder.Services.AddControllers()
 builder.Services.AddGateOpsApplication();
 builder.Services.AddGateOpsInfrastructure();
 
+const string WebClientCorsPolicy = "WebClient";
+var allowedOrigins = builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>()
+    ?? ["http://localhost:5173", "http://localhost:4200"];
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(WebClientCorsPolicy, policy =>
+        policy.WithOrigins(allowedOrigins).AllowAnyHeader().AllowAnyMethod());
+});
+
 builder.Services.AddOpenApi();
 
 var app = builder.Build();
@@ -25,6 +34,7 @@ app.MapScalarApiReference(options =>
 app.UseMiddleware<GateOpsExceptionHandlingMiddleware>();
 
 app.UseHttpsRedirection();
+app.UseCors(WebClientCorsPolicy);
 app.UseAuthorization();
 app.MapControllers();
 
